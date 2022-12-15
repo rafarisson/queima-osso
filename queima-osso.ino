@@ -89,6 +89,15 @@ void setup() {
   server.on("/jquery.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/jquery.min.js", "text/javascript");
   });
+  server.on("/chart.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/chart.min.js", "text/javascript");
+  });
+  server.on("/chart.umd.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/chart.umd.min.js", "text/javascript");
+  });
+  server.on("/helpers.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/helpers.min.js", "text/javascript");
+  });
   server.on("/app.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/app.min.js", "text/javascript");
   });
@@ -152,6 +161,7 @@ static String server_handler_get_temp(void) {
 
   doc["temp"] = temp_value;
   doc["output"] = FW_CONFIG_PID_OUT_PERCENT(pid_output);
+  doc["setpoint"] = pid_setpoint;
 
   serializeJson(doc, response);
   return response;
