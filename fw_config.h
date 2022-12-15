@@ -14,6 +14,10 @@
 // Para desativar essa funcionalidade basta definir como 0
 #define FW_CONFIG_PERIODIC_DEBUG_MS       1000
 
+// Configuração do limite de temperatura
+#define FW_CONFIG_TEMP_MIN                40.0
+#define FW_CONFIG_TEMP_MAX                90.0
+
 // Configuração padrão para o PID
 #define FW_CONFIG_PID_KP                  40.0
 #define FW_CONFIG_PID_KI                  1.0
@@ -25,9 +29,11 @@
 // o controle da onda é estável
 #define FW_CONFIG_PID_OUT_LIMIT_MIN       10
 #define FW_CONFIG_PID_OUT_LIMIT_MAX       240
+#define FW_CONFIG_PID_OUT_PERCENT(V)      (V / FW_CONFIG_PID_OUT_LIMIT_MAX * 100)
 
 // Respostas padrão para o servidor HTTP
-#define FW_CONFIG_HTTP_RESP_OK            "{\"success\":1}"
-#define FW_CONFIG_HTTP_RESP_ERROR         "{\"success\":0}"
+#define FW_CONFIG_HTTP_RESP(S)            "{\"status\":\"" S "\"}"
+#define FW_CONFIG_HTTP_RESP_OK            FW_CONFIG_HTTP_RESP("ok")
+#define FW_CONFIG_HTTP_RESP_ERROR         FW_CONFIG_HTTP_RESP("error")
 
 #endif
