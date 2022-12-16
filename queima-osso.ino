@@ -37,6 +37,8 @@ static String server_handler_get_temp(void);
 static String server_handler_set_pid(AsyncWebServerRequest *request);
 
 void setup() {
+  WiFi.persistent(false);
+
   Serial.begin(115200);
   Serial.println();
   Serial.print("queima-osso v");
@@ -53,6 +55,7 @@ void setup() {
     Serial.println("spiffs iniciada");
 
 #if !FW_CONFIG_TEST_XPTEC
+  WiFi.mode(WIFI_AP);
 #if FW_CONFIG_AP_PASS_EN
   WiFi.softAP(FW_CONFIG_AP_SSID, FW_CONFIG_AP_PASS);
   Serial.println("wifi ap iniciada");
