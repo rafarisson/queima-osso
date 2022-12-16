@@ -44,7 +44,7 @@ void setup() {
 
   rst_info *resetInfo;
   resetInfo = ESP.getResetInfoPtr();
-  Serial.print("reset: ");
+  Serial.print("motivo do reset: ");
   Serial.println(resetInfo->reason);
 
   if (!SPIFFS.begin())
@@ -137,6 +137,9 @@ static double get_temp(void) {
   if (isnan(t) || isinf(t)) {
     t = temp_value;
   }
+#if FW_CONFIG_TEST_XPTEC
+//  t = random(FW_CONFIG_TEMP_MIN, FW_CONFIG_TEMP_MAX);
+#endif
   return t;
 }
 
@@ -159,6 +162,7 @@ static String server_handler_get_temp(void) {
   String response;
   StaticJsonDocument<200> doc;
 
+  doc["tsec"] = millis() / 1000;
   doc["temp"] = temp_value;
   doc["output"] = FW_CONFIG_PID_OUT_PERCENT(pid_output);
   doc["setpoint"] = pid_setpoint;
