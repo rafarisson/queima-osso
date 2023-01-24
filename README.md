@@ -1,17 +1,19 @@
 # queima-osso
 
+Projeto de sous vide.
+
 ### Arduino IDE
 
 Usando Arduino IDE v1.8.19
 
-Compatível com Arduino IDE v2.0.3 (apenas gravação SPIFFS não está disponível nessa versão)
+Compatível com Arduino IDE v2.0.3 (apenas gravação SPIFFS não está disponível nessa versão).
 
 ### Configurações
 
 A maioria das configurações do ESP8266/Arduino são padrões, exceto o tamanho da flash. 
 
 O tamanho da flash deve considerar o tamanho da SPIFFS necessário (isso depende também do tamanho dos arquivos que são colocados na SPIFFS).
-Para esse projeto o tamanho da flash está configurado como `4MB (FS:1MB OTA:~1019KB)`
+Para esse projeto o tamanho da flash está configurado como `4MB (FS:1MB OTA:~1019KB)`.
 
 ### Gravação de dados SPIFFS
 
@@ -19,12 +21,12 @@ Os arquivos da página web são armazenados na SPIFFS.
 Para gravação desses dados é necessário utilizar a IDE de programação Arduino na versão 1.8.x, e instalar o plugin 
 [ESP8266FS](https://github.com/esp8266/arduino-esp8266fs-plugin/releases).
 
-Tutorial de instalação e gravação disponível [aqui](https://randomnerdtutorials.com/install-esp8266-filesystem-uploader-arduino-ide/)
+Tutorial de instalação e gravação disponível [aqui](https://randomnerdtutorials.com/install-esp8266-filesystem-uploader-arduino-ide/).
 
-1. Baixar e extrair a pasta ESP8266FS para o diretório do arduino (ex. `C:\Program Files (x86)\Arduino\tools`)
-2. Reiniciar o Arduino IDE (v1.8.x)
-3. Criar uma pasta `data` no sketch
-4. Exercutar o gravador em Tools->ESP8266 Sketch Data Upload (todos os arquivos na pasta `data` serão copiados para a SPIFFS)
+1. Baixar e extrair a pasta ESP8266FS para o diretório do arduino (ex. `C:\Program Files (x86)\Arduino\tools`);
+2. Reiniciar o Arduino IDE (v1.8.x);
+3. Criar uma pasta `data` no sketch;
+4. Exercutar o gravador em Tools->ESP8266 Sketch Data Upload (todos os arquivos na pasta `data` serão copiados para a SPIFFS).
 
 ### Dependências
 
